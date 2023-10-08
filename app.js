@@ -11,7 +11,7 @@ app.use(express.static('public'));
 
 
 // Define routes.
-//const logMealsRouter = require('./routes/mealsRoutes'); // Route to log meals
+const fetchMealsRouter = require('./routes/mealsRoutes'); // Route to log meals
 //const usersRouter = require('./routes/usersRoutes'); // Route users are taken to upon login
 const homePageRouter = require('./routes/homePage'); // Route to the main homepage
 //const reportsRouter = require('./routes/generateReport'); // Route to generate reports
@@ -19,7 +19,7 @@ const homePageRouter = require('./routes/homePage'); // Route to the main homepa
 // Use routes
 app.use('/', homePageRouter);
 //app.use('/api/report', reportsRouter);
-//app.use('/api/meals', logMealsRouter);
+app.use('/api/meals', fetchMealsRouter);
 //app.use('/api/users', usersRouter);
 
 // Error handling middleware.

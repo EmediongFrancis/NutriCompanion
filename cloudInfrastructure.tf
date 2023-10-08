@@ -57,8 +57,8 @@ resource "aws_cognito_identity_provider" "google" {
   provider_name        = "Google"
   provider_type        = "Google"
   provider_details     = {
-    client_id = "765800523086-s225su8r2v742u7m4m13ve15ga9o580o.apps.googleusercontent.com"
-    client_secret = "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"
+    client_id = "765800523086-s225su8r2v742u7m4m13ve15ga9o580o.apps.googleusercontent.com" # Sensitive data. Should be stored in a secret manager.
+    client_secret = "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" # Sensitive data. Should be stored in a secret manager.
     authorize_scopes = "email profile openid"
 
   }

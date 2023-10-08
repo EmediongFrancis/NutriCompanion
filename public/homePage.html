@@ -19,13 +19,51 @@
             <p>Track what you eat daily and get insights into your nutrition.</p>
         </section>
         <section>
-            <h2>Generate Reports</h2>
-            <p>Get personalized nutrition reports to help you make healthier choices.</p>
+            <h2>Logged Meals</h2>
+            <div id="meals-list">
+                <!-- Meal data will be inserted here dynamically -->
+            </div>
+            <p id="no-meals-message">You haven't logged any meals yet.</p>
         </section>
     </main>
     <footer>
         <p>&copy; 2023 NutriCompanion</p>
     </footer>
+
+    <script>
+        // Function to fetch meal data from the server
+        function fetchMealData() {
+            fetch('/api/meals') // Replace with your server endpoint
+                .then(response => response.json())
+                .then(data => {
+                    const mealsList = document.getElementById('meals-list');
+                    const noMealsMessage = document.getElementById('no-meals-message');
+
+                    if (data.length > 0) {
+                        mealsList.innerHTML = generateMealHTML(data);
+                        noMealsMessage.style.display = 'none';
+                    } else {
+                        mealsList.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching meal data:', error);
+                });
+        }
+
+        // Function to generate HTML for meal data
+        function generateMealHTML(meals) {
+            return meals.map(meal => `
+                <div class="meal">
+                    <h3>${meal.mealName}</h3>
+                    <p>Calories: ${meal.calories}</p>
+                </div>
+            `).join('');
+        }
+
+        // Call the fetchMealData function when the page loads
+        window.onload = fetchMealData;
+    </script>
 </body>
 
 </html>
