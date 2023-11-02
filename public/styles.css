@@ -1,61 +1,74 @@
 /* Reset some default styles */
-body, h1, h2, p {
-  margin: 0;
-  padding: 0;
+body, h1, h2, form {
+    margin: 0;
+    padding: 0;
 }
 
-/* Set a background color and text color */
+/* Set background color and text color */
 body {
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
-  color: #333;
+    background-color: #f0f0f0;
+    color: #333;
+    font-family: Arial, sans-serif;
 }
 
-/* Header styles */
-header {
-  background-color: #007acc;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
+/* Center the container */
+.container {
+    text-align: center;
+    margin: 10% auto;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-  font-size: 2.5rem;
+/* Style the buttons */
+.buttons button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
-/* Main content styles */
-main {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+/* Style the forms */
+.form {
+    text-align: left;
+    padding: 20px;
+    display: none;
 }
 
-section {
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+.form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
-/* Footer styles */
-footer {
-  text-align: center;
-  padding: 10px 0;
-  background-color: #333;
-  color: #fff;
+.form button[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
-/* Links styles */
-a {
-  color: #007acc;
-  text-decoration: none;
+/* Style the form buttons */
+#signup-button {
+    background-color: #2ecc71;
 }
 
-a:hover {
-  text-decoration: underline;
+#signin-button {
+    background-color: #e74c3c;
 }
