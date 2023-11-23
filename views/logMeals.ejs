@@ -1,0 +1,38 @@
+<%- include('partials/header'); -%>
+
+
+    <button><a href="/addMeal" class="btn">Add a Meal</a></button>
+
+
+    <h2>Here are your logged meals, <%- user.username -%>:</h2>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Meal Name</th>
+            <th>Type of Meal</th>
+            <th>Portion Consumed</th>
+        </tr>
+        <% for (let i=0; i < loggedMeals.length; i++) { %>
+            <tr>
+                <td>
+                    <%= loggedMeals[i].date %>
+                </td>
+                <td>
+                    <%= loggedMeals[i].mealName %>
+                </td>
+                <td>
+                    <%= loggedMeals[i].mealType %>
+                </td>
+                <td>
+                    <%= loggedMeals[i].portionConsumed %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+
+    <button class="btng"><a href="/logMeals" class="btng">Generate Report</a></button>
+
+
+
+    <%- include('partials/footer'); -%>

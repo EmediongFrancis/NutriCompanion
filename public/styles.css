@@ -65,6 +65,11 @@ nav li a {
     background: #FEE996;
 }
 
+.btng {
+    border-radius: 36px;
+    background: #7ae94e;
+}
+
 form h2 {
     font-size: 2.4em;
     font-weight: 900;
@@ -171,4 +176,34 @@ footer {
     text-align: center;
     margin-top: 550px;
     color: #aaa;
+}
+
+/* Style for the table container */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Style for table headers */
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+/* Style for table header and data cells */
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Style for alternating rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect on rows */
+tr:hover {
+    background-color: #ddd;
 }
