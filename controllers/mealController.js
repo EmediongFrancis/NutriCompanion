@@ -20,7 +20,3 @@ module.exports.addMeal_post = async (req, res) => {
         console.log(err);
     }
 }
-
-module.exports.logMeals_post = async (req, res) => {
-
-}
