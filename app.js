@@ -71,9 +71,40 @@ app.get('/generateReport', requireAuth, async (req, res) => {
             console.log('Found data in the foodItems collection! Yaay!');
         }
 
+        const userData = req.cookies.jwt;
+        const userID = jwt.decode(userData);
+        const userId = userID.id;
+        const loggedMeals = await LoggedMeal.find({ userIDT: userId });
+        console.log(loggedMeals);
+
+        const detailedMeals = [];
+
+        for (const loggedMeal of loggedMeals) {
+            const mealName = loggedMeal.mealName;
+
+            // Fetch data from the 'foodItems' collection for each mealName
+            // Attempt to fetch data from the 'foodItems' collection using EnglishName
+            let fetchedFoodItem = await collection.findOne({ EnglishName: mealName });
+
+            // If EnglishName doesn't yield results, try using LocalName
+            if (!fetchedFoodItem) {
+                fetchedFoodItem = await collection.findOne({ LocalName: mealName });
+            }
+
+            console.log('Original fetched fI' + fetchedFoodItem);
+
+            if (fetchedFoodItem) {
+                detailedMeals.push({ mealName, foodItemDetails: fetchedFoodItem });
+            } else {
+                detailedMeals.push({ mealName, foodItemDetails: 'Not found' });
+            }
+        }
+
+        console.log(detailedMeals);
+
+
         // res.render('generateReport', { foodItems });
-        res.send(foodItems);
-        await client.close();
+        res.render('generateReport', { detailedMeals });
     } catch (error) {
         console.error('Error generating report:', error);
         res.status(500).send('Error generating report.');

@@ -1,8 +1,50 @@
 <%- include('partials/header'); -%>
 
-    The nutrient report for your meals logged so far are:
+    <h2>Here is your nutrient report, <%- user.username -%>:</h2>
 
-
+    <table>
+        <thead>
+            <tr>
+                <th>Meal Name</th>
+                <th>Nutrients</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i=0; i < detailedMeals.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= detailedMeals[i].mealName %>
+                    </td>
+                    <td>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nutrient</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% const foodItemDetails=detailedMeals[i].foodItemDetails; %>
+                                    <% for (const key in foodItemDetails) { %>
+                                        <% if (key !=='SearchName' && key !=='_id' && key !=='Id' && key !=='REFID' ) {
+                                            %>
+                                            <tr>
+                                                <td>
+                                                    <%= key %>
+                                                </td>
+                                                <td>
+                                                    <%= foodItemDetails[key] %>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                                <% } %>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
 
 
     <%- include('partials/footer'); -%>
